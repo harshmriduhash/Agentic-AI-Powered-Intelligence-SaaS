@@ -1,11 +1,13 @@
-import { runLLM } from '../services/openai.js';
+import { runLLM } from "../services/openai.js";
 
 export async function noiseFilterAgent(event, userContext) {
   const prompt = `
-Analyze if this event is important for someone interested in: ${userContext.interests.join(', ')}
+Analyze if this event is important for someone interested in: ${userContext.interests.join(
+    ", "
+  )}
 
 Event Title: ${event.title}
-Event Content: ${event.content?.substring(0, 500) || 'No content'}
+Event Content: ${event.content?.substring(0, 500) || "No content"}
 
 Return JSON with:
 - important: boolean (true if this is newsworthy/significant)
@@ -16,6 +18,6 @@ Ignore: memes, jokes, personal opinions, low-quality posts
 Focus on: releases, incidents, breaking news, major updates
 `;
 
-  const response = await runLLM(prompt, { responseFormat: 'json_object' });
+  const response = await runLLM(prompt, { responseFormat: "json_object" });
   return JSON.parse(response);
 }
