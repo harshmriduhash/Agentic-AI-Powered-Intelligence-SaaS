@@ -1,0 +1,95 @@
+# ==========================================
+# CRITICAL: ENVIRONMENT & CREDENTIALS
+# ==========================================
+# NEVER commit these files - they contain secrets!
+.env
+.env.local
+.env.*.local
+
+# ==========================================
+# NODE MODULES & BUILD
+# ==========================================
+node_modules/
+dist/
+build/
+*.log
+logs/
+
+# ==========================================
+# OPERATING SYSTEM FILES
+# ==========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ==========================================
+# REQUIRED ENVIRONMENT VARIABLES
+# ==========================================
+# 📋 Create a .env file in the root with these CRITICAL variables:
+#
+# DATABASE CONFIGURATION
+# ├─ MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/database
+#
+# OPENAI CONFIGURATION
+# ├─ OPENAI_API_KEY=sk-...your-api-key...
+#
+# EMAIL SERVICE (SMTP)
+# ├─ EMAIL_HOST=smtp.gmail.com
+# ├─ EMAIL_PORT=587
+# ├─ EMAIL_USER=your-email@gmail.com
+# ├─ EMAIL_PASSWORD=your-app-password (NOT your Gmail password!)
+#    Note: For Gmail, generate an App Password:
+#    https://myaccount.google.com/apppasswords
+#
+# OPTIONAL CONFIGURATION
+# ├─ ENABLE_SCHEDULERS=false (set to true to enable background jobs)
+# ├─ PORT=5000
+#
+# ==========================================
+# DEPENDENCIES INSTALLED VIA NPM
+# ==========================================
+# Core Dependencies (in package.json):
+# ├─ express: ^5.2.1           (REST API framework)
+# ├─ mongoose: ^9.0.2          (MongoDB ORM)
+# ├─ openai: ^6.15.0           (OpenAI GPT API client)
+# ├─ nodemailer: ^7.0.12       (Email sending)
+# ├─ rss-parser: ^3.13.0       (RSS feed parsing)
+# ├─ axios: ^1.13.2            (HTTP client)
+# ├─ cheerio: ^1.1.2           (HTML/XML parsing)
+# ├─ dotenv: ^17.2.3           (Environment variables)
+# ├─ cors: ^2.8.5              (CORS middleware)
+# ├─ node-cron: ^4.2.1         (Task scheduling)
+# ├─ cron: ^4.4.0              (Cron expressions)
+# ├─ zod: ^4.2.1               (Data validation)
+#
+# Dev Dependencies:
+# └─ nodemon: ^3.1.11          (Auto-restart on file changes)
+#
+# Install all: npm install
+#
+# ==========================================
+# IMPORTANT NOTES
+# ==========================================
+# 1. Setup MongoDB:
+#    - Create cluster on MongoDB Atlas
+#    - Generate connection string
+#    - Add to MONGODB_URI in .env
+#
+# 2. Setup OpenAI:
+#    - Create API key at https://platform.openai.com/
+#    - Add to OPENAI_API_KEY in .env
+#
+# 3. Setup Email (Gmail):
+#    - Enable 2-Factor Authentication
+#    - Generate App Password at https://myaccount.google.com/apppasswords
+#    - Use App Password in EMAIL_PASSWORD (NOT your Gmail password!)
+#
+# 4. Run Server:
+#    npm start        (production)
+#    npm run dev      (development with auto-reload)
+#
+# 5. Test Health:
+#    curl http://localhost:5000/health
+#
+# ==========================================
