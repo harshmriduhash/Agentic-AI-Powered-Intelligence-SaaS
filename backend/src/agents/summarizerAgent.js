@@ -1,21 +1,23 @@
-import { runLLM } from '../services/openai.js';
+import { runLLM } from "../services/openai.js";
 
 export async function summarizerAgent(event, userContext) {
-  const tone = userContext.preferences?.tone || 'concise';
-  
+  const tone = userContext.preferences?.tone || "concise";
+
   const toneInstructions = {
-    concise: 'Be brief and to the point.',
-    detailed: 'Provide comprehensive analysis.',
-    technical: 'Use technical terminology and deep details.'
+    concise: "Be brief and to the point.",
+    detailed: "Provide comprehensive analysis.",
+    technical: "Use technical terminology and deep details.",
   };
-  
+
   const prompt = `
-Summarize this event for someone interested in: ${userContext.interests.join(', ')}
+Summarize this event for someone interested in: ${userContext.interests.join(
+    ", "
+  )}
 Tone: ${tone}. ${toneInstructions[tone]}
 
 Event: ${event.title}
-Content: ${event.content || ''}
-URL: ${event.url || ''}
+Content: ${event.content || ""}
+URL: ${event.url || ""}
 
 Provide:
 1. tldr: One sentence (max 150 chars)
@@ -32,6 +34,6 @@ Return valid JSON:
 }
 `;
 
-  const response = await runLLM(prompt, { responseFormat: 'json_object' });
+  const response = await runLLM(prompt, { responseFormat: "json_object" });
   return JSON.parse(response);
 }
