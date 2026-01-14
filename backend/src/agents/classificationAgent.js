@@ -1,11 +1,11 @@
-import { runLLM } from '../services/openai.js';
+import { runLLM } from "../services/openai.js";
 
 export async function classificationAgent(event, userContext) {
   const prompt = `
 Classify this event into ONE category and determine relevant topics.
 
 Event: ${event.title}
-Content: ${event.content?.substring(0, 300) || ''}
+Content: ${event.content?.substring(0, 300) || ""}
 
 Categories:
 - release: New product/feature launches
@@ -26,6 +26,6 @@ Return JSON:
 }
 `;
 
-  const response = await runLLM(prompt, { responseFormat: 'json_object' });
+  const response = await runLLM(prompt, { responseFormat: "json_object" });
   return JSON.parse(response);
 }
